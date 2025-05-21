@@ -37,11 +37,9 @@ with open('2D_norm.json', 'w', encoding='utf-8') as f:
     json.dump(normalized_data, f, indent=4, ensure_ascii=False)
 
 
-# 读取 JSON 文件
 with open('2D_norm.json', 'r') as f:
     data = json.load(f)
 
-# 遍历每个元素，计算平均值并添加
 for item in data:
     bleu1 = item.get('bleu1', 0)
     rouge1 = item.get('rouge1', 0)
@@ -51,6 +49,5 @@ for item in data:
     ave = (bleu1 + rouge1 + rougeL + meteor + bert_f1) / 5
     item['ave'] = ave
 
-# 写回 JSON 文件
 with open('2D_norm.json', 'w') as f:
     json.dump(data, f, indent=4)
